@@ -73,10 +73,13 @@ graph TD
 # Featured Projects
 
 <!-- FEATURED:START -->
-<div align="center">
-
-<a href="https://github.com/robruon/sl">
+<div align="center">$'
+'<a href="https://github.com/robruon/sl">
 <img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=sl&theme=github_dark&hide_border=true" />
+</a>
+
+<a href="https://github.com/robruon/sl-registry">
+<img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=sl-registry&theme=github_dark&hide_border=true" />
 </a>
 
 <a href="https://github.com/robruon/kats">
@@ -87,12 +90,12 @@ graph TD
 <img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=gravitas&theme=github_dark&hide_border=true" />
 </a>
 
-<a href="https://github.com/robruon/sl-registry">
-<img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=sl-registry&theme=github_dark&hide_border=true" />
-</a>
-
 <a href="https://github.com/robruon/hxstg-showcase">
 <img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=hxstg-showcase&theme=github_dark&hide_border=true" />
+</a>
+
+<a href="https://github.com/robruon/.github">
+<img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=.github&theme=github_dark&hide_border=true" />
 </a>
 
 </div>
@@ -103,11 +106,11 @@ graph TD
 # Organization Metrics
 
 <!-- METRICS:START -->
-<div align="center">
-
-<img src="./assets/metrics.svg" alt="Organization Metrics" />
-
-</div>
+<div align="center">$'
+'$'
+'<img src="./assets/metrics.svg" alt="Organization Metrics" />$'
+'$'
+'</div>
 <!-- METRICS:END -->
 
 ---
@@ -115,6 +118,15 @@ graph TD
 # Latest Releases
 
 <!-- RELEASES:START -->
+| Repository | Latest Release | Date |$'
+'|:--|:--|:--|$'
+'| **sl** | [null](null) | null |
+| **sl-registry** | [null](null) | null |
+| **kats** | [null](null) | null |
+| **gravitas** | [null](null) | null |
+| **hxstg-showcase** | [null](null) | null |
+| **.github** | [null](null) | null |
+
 <!-- RELEASES:END -->
 
 ---
@@ -122,6 +134,45 @@ graph TD
 # Recent Engineering Activity
 
 <!-- ACTIVITY:START -->
+### kats
+
+| Author | Message | Date | Link |
+|:--|:--|:--|:--|
+| Hostage Project | fix: prefix API fetch URLs with /kats basePath | 2026-07-14 | https://github.com/robruon/kats/commit/06f0193740467bbb72bd4f1545ee8801d4320848 |
+| Hostage Project | chore: add basePath /kats for Vercel deployment routing | 2026-07-14 | https://github.com/robruon/kats/commit/815fbb24ae95151d15dceee75e30cbb22c1d10fb |
+| Hostage Project | fix: track demo db in git, fix journal 500s on Vercel | 2026-07-14 | https://github.com/robruon/kats/commit/09eafe7e4810b71c51ea5b1e47551d5eeca0941d |
+| Hostage Project | fix: removed dangling push after postinstall command | 2026-07-14 | https://github.com/robruon/kats/commit/ceee69dcb970ef122fad9aad4c2ad1c2b89fced0 |
+| Hostage Project | fix: make demo mode work on Vercel serverless | 2026-07-14 | https://github.com/robruon/kats/commit/cf5312a2f6bd93819cb5da1c0fec137f67741418 |
+| Hostage Project | fix: Typescript strict cast errors | 2026-07-14 | https://github.com/robruon/kats/commit/00c9f990a9eac9983099f494048a8f4193ed0f29 |
+| Hostage Project | chore: bump dependencies | 2026-07-14 | https://github.com/robruon/kats/commit/7a92349f46cba22498e81e12d65a91d7d53ea4a7 |
+| Hostage Project | fix: await params in Next.js 16 route handler for [...path] catch all | 2026-07-14 | https://github.com/robruon/kats/commit/5afa95d978c12bdd47d487f4c39baf566b99374b |
+| Hostage Project | feat: add demo mode with pre-seeded data for resume showcase | 2026-07-14 | https://github.com/robruon/kats/commit/1dfca4a3f619ef1c43b3383b2e6685ecb318e528 |
+| Hostage Project | Improve README clone instructions for submodules | 2026-07-14 | https://github.com/robruon/kats/commit/0c319dcf2ddfcd1d354b37a2a557a6c7d617b3c6 |
+
+### gravitas
+
+| Author | Message | Date | Link |
+|:--|:--|:--|:--|
+| Hostage Project | Update repository URL in installation instructions | 2026-07-13 | https://github.com/robruon/gravitas/commit/139ecf7b4ebb6dbbae53d8358114271290f17b77 |
+| Hostage Project | Initial Commit | 2026-07-13 | https://github.com/robruon/gravitas/commit/d8274ed9624ce79a6eab7e0ff5ef02f1bce3c07b |
+
+### hxstg-showcase
+
+| Author | Message | Date | Link |
+|:--|:--|:--|:--|
+| Hostage Project | un-ignored .pyd files so Windows extensions get commited | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/c6075b7f47dfd3482ba38f28cedaf3794db31fa0 |
+| Hostage Project | Initial: showcase UI, __init__ wrappers | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/3896df90ceaaa39ea917ed9c108b30d3aa5a3310 |
+
+### .github
+
+| Author | Message | Date | Link |
+|:--|:--|:--|:--|
+| Hostage Project | Add git pull command before pushing changes | 2026-07-15 | https://github.com/robruon/.github/commit/c9645f12bab23264c179bd4eb16da2c3cef8f989 |
+| Hostage Project | fix: use correct bash newline syntax in profile generation workflow | 2026-07-15 | https://github.com/robruon/.github/commit/d24a312459b503789f746767968fc4351f50dcc4 |
+| Hostage Project | feat: add auto-generated profile workflow and OpenGraph banner | 2026-07-15 | https://github.com/robruon/.github/commit/6c31b276b7a596cf7dcc3058a568534b184e00a1 |
+| Hostage Project | Initial commit | 2026-07-15 | https://github.com/robruon/.github/commit/4f24994614863455afff975d4605257498c20b0b |
+
+
 <!-- ACTIVITY:END -->
 
 ---
@@ -206,10 +257,17 @@ ROBRUON projects are guided by a consistent set of engineering principles.
 # Repository Organization
 
 <!-- REPOS:START -->
-Repositories are intentionally separated into focused engineering domains.
+Repositories are intentionally separated into focused engineering domains.$'
+'$'
+'| Repository | Description | Language |$'
+'|:--|:--|:--|$'
+'| **sl** | A statically-typed compiled language with an LLVM-backed JIT, ARC memory management, and a C FFI layer | Python |
+| **sl-registry** | Official package index for the SL programming language. Browse, install, and publish community bundles. | — |
+| **kats** | Real-time trading dashboard powered by an ML forecasting model — Next.js, WebSockets, FastAPI, multi-broker execution | Python |
+| **gravitas** | Solidity smart contract for a time-weighted, extraction-adjusted capital allocation model, tested via Hardhat | Python |
+| **hxstg-showcase** | Public showcase for HXSTG — a text-transformation engine with HPV2 encryption and CArch steganographic archiving | Python |
+| **.github** | — | — |
 
-| Repository | Purpose |
-|:--|:--|
 <!-- REPOS:END -->
 
 ---
