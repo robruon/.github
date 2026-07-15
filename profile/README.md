@@ -73,8 +73,8 @@ graph TD
 # Featured Projects
 
 <!-- FEATURED:START -->
-<div align="center">$'
-'<a href="https://github.com/robruon/sl">
+<div align="center">
+<a href="https://github.com/robruon/sl">
 <img src="https://github-readme-stats.shion.dev/api/pin/?username=robruon&repo=sl&theme=github_dark&hide_border=true" />
 </a>
 
@@ -106,11 +106,11 @@ graph TD
 # Organization Metrics
 
 <!-- METRICS:START -->
-<div align="center">$'
-'$'
-'<img src="./assets/metrics.svg" alt="Organization Metrics" />$'
-'$'
-'</div>
+<div align="center">
+
+<img src="./assets/metrics.svg" alt="Organization Metrics" />
+
+</div>
 <!-- METRICS:END -->
 
 ---
@@ -118,14 +118,8 @@ graph TD
 # Latest Releases
 
 <!-- RELEASES:START -->
-| Repository | Latest Release | Date |$'
-'|:--|:--|:--|$'
-'| **sl** | [null](null) | null |
-| **sl-registry** | [null](null) | null |
-| **kats** | [null](null) | null |
-| **gravitas** | [null](null) | null |
-| **hxstg-showcase** | [null](null) | null |
-| **.github** | [null](null) | null |
+| Repository | Latest Release | Date |
+|:--|:--|:--|
 
 <!-- RELEASES:END -->
 
@@ -167,10 +161,10 @@ graph TD
 
 | Author | Message | Date | Link |
 |:--|:--|:--|:--|
+| Hostage Project | fix: resolve bash newline leaking and releases null rows in profile workflow | 2026-07-15 | https://github.com/robruon/.github/commit/5f422d200373c31720426efdd84e8b70eff0b6ad |
 | Hostage Project | Add git pull command before pushing changes | 2026-07-15 | https://github.com/robruon/.github/commit/c9645f12bab23264c179bd4eb16da2c3cef8f989 |
 | Hostage Project | fix: use correct bash newline syntax in profile generation workflow | 2026-07-15 | https://github.com/robruon/.github/commit/d24a312459b503789f746767968fc4351f50dcc4 |
 | Hostage Project | feat: add auto-generated profile workflow and OpenGraph banner | 2026-07-15 | https://github.com/robruon/.github/commit/6c31b276b7a596cf7dcc3058a568534b184e00a1 |
-| Hostage Project | Initial commit | 2026-07-15 | https://github.com/robruon/.github/commit/4f24994614863455afff975d4605257498c20b0b |
 
 
 <!-- ACTIVITY:END -->
@@ -257,11 +251,11 @@ ROBRUON projects are guided by a consistent set of engineering principles.
 # Repository Organization
 
 <!-- REPOS:START -->
-Repositories are intentionally separated into focused engineering domains.$'
-'$'
-'| Repository | Description | Language |$'
-'|:--|:--|:--|$'
-'| **sl** | A statically-typed compiled language with an LLVM-backed JIT, ARC memory management, and a C FFI layer | Python |
+Repositories are intentionally separated into focused engineering domains.
+
+| Repository | Description | Language |
+|:--|:--|:--|
+| **sl** | A statically-typed compiled language with an LLVM-backed JIT, ARC memory management, and a C FFI layer | Python |
 | **sl-registry** | Official package index for the SL programming language. Browse, install, and publish community bundles. | — |
 | **kats** | Real-time trading dashboard powered by an ML forecasting model — Next.js, WebSockets, FastAPI, multi-broker execution | Python |
 | **gravitas** | Solidity smart contract for a time-weighted, extraction-adjusted capital allocation model, tested via Hardhat | Python |
