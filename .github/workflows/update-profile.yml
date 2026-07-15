@@ -1,0 +1,145 @@
+name: Update Profile
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile
+  cancel-in-progress: true
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate organization metrics
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          filename: profile/assets/metrics.svg
+          template: classic
+          base: header, repositories, metadata, activity
+          config_display: large
+          plugin_repositories: yes
+          plugin_activity: yes
+          plugin_activity_limit: 8
+          plugin_languages: yes
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_sections: most-used
+
+      - name: Upload metrics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: profile/assets/metrics.svg
+          retention-days: 1
+
+  generate:
+    needs: metrics
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download metrics artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: metrics
+          path: profile/assets
+
+      - name: Generate profile sections
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          README="profile/README.md"
+
+          echo ":: Fetching repositories..."
+          REPOS=$(gh api "/orgs/${OWNER}/repos" --paginate --jq '.[] | select(.archived == false) | .name')
+
+          # --- FEATURED: pinned card grid ---
+          FEATURED=""
+          for REPO in $REPOS; do
+            FEATURED+="<a href=\"https://github.com/${OWNER}/${REPO}\">"${'\n'}
+            FEATURED+="<img src=\"https://github-readme-stats.shion.dev/api/pin/?username=${OWNER}&repo=${REPO}&theme=github_dark&hide_border=true\" />"${'\n'}
+            FEATURED+="</a>"${'\n'}
+            FEATURED+=""${'\n'}
+          done
+
+          # --- RELEASES: table of latest releases ---
+          RELEASE_ROWS=""
+          for REPO in $REPOS; do
+            RELEASE=$(gh api "/repos/${OWNER}/${REPO}/releases/latest" 2>/dev/null || true)
+            if [ -n "$RELEASE" ]; then
+              TAG=$(echo "$RELEASE" | jq -r '.tag_name')
+              DATE=$(echo "$RELEASE" | jq -r '.published_at' | cut -d'T' -f1)
+              URL=$(echo "$RELEASE" | jq -r '.html_url')
+              RELEASE_ROWS+="| **${REPO}** | [${TAG}](${URL}) | ${DATE} |"${'\n'}
+            fi
+          done
+
+          # --- ACTIVITY: recent commits + PRs (last 7 days) ---
+          ACTIVITY_LIST=""
+          SINCE=$(date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-7d +%Y-%m-%dT%H:%M:%SZ)
+
+          for REPO in $REPOS; do
+            COMMITS=$(gh api "/repos/${OWNER}/${REPO}/commits?since=${SINCE}&per_page=10" 2>/dev/null | jq -r '.[] | select(.commit.author.name != "github-actions[bot]") | "| \(.commit.author.name // "unknown") | \(.commit.message | split("\n")[0] | .[0:80]) | \(.commit.author.date | split("T")[0]) | \(.html_url) |"' 2>/dev/null || true)
+            if [ -n "$COMMITS" ]; then
+              ACTIVITY_LIST+="### ${REPO}"${'\n\n'}
+              ACTIVITY_LIST+="| Author | Message | Date | Link |"${'\n'}
+              ACTIVITY_LIST+="|:--|:--|:--|:--|"${'\n'}
+              ACTIVITY_LIST+="${COMMITS}"${'\n\n'}
+            fi
+          done
+
+          # --- REPOS: organization table ---
+          REPO_TABLE=""
+          for REPO in $REPOS; do
+            META=$(gh api "/repos/${OWNER}/${REPO}" 2>/dev/null)
+            DESC=$(echo "$META" | jq -r '.description // "—"')
+            LANG=$(echo "$META" | jq -r '.language // "—"')
+            REPO_TABLE+="| **${REPO}** | ${DESC} | ${LANG} |"${'\n'}
+          done
+
+          # --- Replace sections between markers ---
+          replace_section() {
+            local start_marker="$1"
+            local end_marker="$2"
+            local content="$3"
+            local tmpfile
+            tmpfile=$(mktemp)
+
+            awk -v start="<!-- ${start_marker}:START -->" \
+                -v end="<!-- ${end_marker}:END -->" \
+                -v content="${content}" \
+                '
+                $0 ~ start { print; printf "%s\n", content; skip=1; next }
+                $0 ~ end { skip=0 }
+                !skip { print }
+                ' "$README" > "$tmpfile"
+            mv "$tmpfile" "$README"
+          }
+
+          replace_section "FEATURED" "FEATURED" "<div align=\"center\">${'\n'}${FEATURED}</div>"
+          replace_section "METRICS" "METRICS" "<div align=\"center\">${'\n'}${'\n'}<img src=\"./assets/metrics.svg\" alt=\"Organization Metrics\" />${'\n'}${'\n'}</div>"
+          replace_section "RELEASES" "RELEASES" "| Repository | Latest Release | Date |${'\n'}|:--|:--|:--|${'\n'}${RELEASE_ROWS}"
+          replace_section "ACTIVITY" "ACTIVITY" "${ACTIVITY_LIST}"
+          replace_section "REPOS" "REPOS" "Repositories are intentionally separated into focused engineering domains.${'\n'}${'\n'}| Repository | Description | Language |${'\n'}|:--|:--|:--|${'\n'}${REPO_TABLE}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "docs: update profile README"
+          git push
