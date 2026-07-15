@@ -79,7 +79,7 @@ jobs:
           RELEASE_ROWS=""
           for REPO in $REPOS; do
             RELEASE=$(gh api "/repos/${OWNER}/${REPO}/releases/latest" 2>/dev/null || true)
-            if [ -n "$RELEASE" ]; then
+            if [ -n "$RELEASE" ] && echo "$RELEASE" | jq -e '.tag_name' >/dev/null 2>&1; then
               TAG=$(echo "$RELEASE" | jq -r '.tag_name')
               DATE=$(echo "$RELEASE" | jq -r '.published_at' | cut -d'T' -f1)
               URL=$(echo "$RELEASE" | jq -r '.html_url')
@@ -111,6 +111,8 @@ jobs:
           done
 
           # --- Replace sections between markers ---
+          NL=$'\n'
+
           replace_section() {
             local start_marker="$1"
             local end_marker="$2"
@@ -129,11 +131,11 @@ jobs:
             mv "$tmpfile" "$README"
           }
 
-          replace_section "FEATURED" "FEATURED" "<div align=\"center\">$'\n'${FEATURED}</div>"
-          replace_section "METRICS" "METRICS" "<div align=\"center\">$'\n'$'\n'<img src=\"./assets/metrics.svg\" alt=\"Organization Metrics\" />$'\n'$'\n'</div>"
-          replace_section "RELEASES" "RELEASES" "| Repository | Latest Release | Date |$'\n'|:--|:--|:--|$'\n'${RELEASE_ROWS}"
+          replace_section "FEATURED" "FEATURED" "<div align=\"center\">${NL}${FEATURED}</div>"
+          replace_section "METRICS" "METRICS" "<div align=\"center\">${NL}${NL}<img src=\"./assets/metrics.svg\" alt=\"Organization Metrics\" />${NL}${NL}</div>"
+          replace_section "RELEASES" "RELEASES" "| Repository | Latest Release | Date |${NL}|:--|:--|:--|${NL}${RELEASE_ROWS}"
           replace_section "ACTIVITY" "ACTIVITY" "${ACTIVITY_LIST}"
-          replace_section "REPOS" "REPOS" "Repositories are intentionally separated into focused engineering domains.$'\n'$'\n'| Repository | Description | Language |$'\n'|:--|:--|:--|$'\n'${REPO_TABLE}"
+          replace_section "REPOS" "REPOS" "Repositories are intentionally separated into focused engineering domains.${NL}${NL}| Repository | Description | Language |${NL}|:--|:--|:--|${NL}${REPO_TABLE}"
 
       - name: Commit and push
         run: |
