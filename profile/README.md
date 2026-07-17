@@ -163,7 +163,6 @@ graph TD
 |:--|:--|:--|:--|
 | Hostage Project | fix: resolve bash newline leaking and releases null rows in profile workflow | 2026-07-15 | https://github.com/robruon/.github/commit/5f422d200373c31720426efdd84e8b70eff0b6ad |
 | Hostage Project | Add git pull command before pushing changes | 2026-07-15 | https://github.com/robruon/.github/commit/c9645f12bab23264c179bd4eb16da2c3cef8f989 |
-| Hostage Project | fix: use correct bash newline syntax in profile generation workflow | 2026-07-15 | https://github.com/robruon/.github/commit/d24a312459b503789f746767968fc4351f50dcc4 |
 
 
 <!-- ACTIVITY:END -->
