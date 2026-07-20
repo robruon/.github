@@ -143,25 +143,12 @@ graph TD
 | Hostage Project | feat: add demo mode with pre-seeded data for resume showcase | 2026-07-14 | https://github.com/robruon/kats/commit/1dfca4a3f619ef1c43b3383b2e6685ecb318e528 |
 | Hostage Project | Improve README clone instructions for submodules | 2026-07-14 | https://github.com/robruon/kats/commit/0c319dcf2ddfcd1d354b37a2a557a6c7d617b3c6 |
 
-### gravitas
-
-| Author | Message | Date | Link |
-|:--|:--|:--|:--|
-| Hostage Project | Update repository URL in installation instructions | 2026-07-13 | https://github.com/robruon/gravitas/commit/139ecf7b4ebb6dbbae53d8358114271290f17b77 |
-| Hostage Project | Initial Commit | 2026-07-13 | https://github.com/robruon/gravitas/commit/d8274ed9624ce79a6eab7e0ff5ef02f1bce3c07b |
-
 ### hxstg-showcase
 
 | Author | Message | Date | Link |
 |:--|:--|:--|:--|
 | Hostage Project | un-ignored .pyd files so Windows extensions get commited | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/c6075b7f47dfd3482ba38f28cedaf3794db31fa0 |
 | Hostage Project | Initial: showcase UI, __init__ wrappers | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/3896df90ceaaa39ea917ed9c108b30d3aa5a3310 |
-
-### .github
-
-| Author | Message | Date | Link |
-|:--|:--|:--|:--|
-| Hostage Project | fix: resolve bash newline leaking and releases null rows in profile workflow | 2026-07-15 | https://github.com/robruon/.github/commit/5f422d200373c31720426efdd84e8b70eff0b6ad |
 
 
 <!-- ACTIVITY:END -->
