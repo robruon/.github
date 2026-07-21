@@ -143,13 +143,6 @@ graph TD
 | Hostage Project | feat: add demo mode with pre-seeded data for resume showcase | 2026-07-14 | https://github.com/robruon/kats/commit/1dfca4a3f619ef1c43b3383b2e6685ecb318e528 |
 | Hostage Project | Improve README clone instructions for submodules | 2026-07-14 | https://github.com/robruon/kats/commit/0c319dcf2ddfcd1d354b37a2a557a6c7d617b3c6 |
 
-### hxstg-showcase
-
-| Author | Message | Date | Link |
-|:--|:--|:--|:--|
-| Hostage Project | un-ignored .pyd files so Windows extensions get commited | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/c6075b7f47dfd3482ba38f28cedaf3794db31fa0 |
-| Hostage Project | Initial: showcase UI, __init__ wrappers | 2026-07-14 | https://github.com/robruon/hxstg-showcase/commit/3896df90ceaaa39ea917ed9c108b30d3aa5a3310 |
-
 
 <!-- ACTIVITY:END -->
 
