@@ -128,6 +128,12 @@ graph TD
 # Recent Engineering Activity
 
 <!-- ACTIVITY:START -->
+### sl
+
+| Author | Message | Date | Link |
+|:--|:--|:--|:--|
+| Hostage Project | feat(compiler): add package resolution, semantic analysis, and pytest structure | 2026-09-21 | https://github.com/robruon/sl/commit/43060f610db1be7dbc63319692f2601ddc3a2c6c |
+
 
 <!-- ACTIVITY:END -->
 
@@ -217,7 +223,7 @@ Repositories are intentionally separated into focused engineering domains.
 
 | Repository | Description | Language |
 |:--|:--|:--|
-| **sl** | A statically-typed compiled language with an LLVM-backed JIT, ARC memory management, and a C FFI layer | Python |
+| **sl** | Symbolic Language (SL) — an ASCII-first systems programming language with a Python bootstrap compiler, static semantics, native LLVM code generation, modules, packages, and an evolving self-hosting toolchain. | Python |
 | **sl-registry** | Official package index for the SL programming language. Browse, install, and publish community bundles. | — |
 | **kats** | Real-time trading dashboard powered by an ML forecasting model — Next.js, WebSockets, FastAPI, multi-broker execution | Python |
 | **gravitas** | Solidity smart contract for a time-weighted, extraction-adjusted capital allocation model, tested via Hardhat | Python |
