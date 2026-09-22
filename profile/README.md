@@ -132,6 +132,7 @@ graph TD
 
 | Author | Message | Date | Link |
 |:--|:--|:--|:--|
+| Hostage Project | refactor(language): adopt .syl and remove legacy syntax | 2026-09-21 | https://github.com/robruon/sl/commit/9974c808a0706c190d66edcabdd7326647bc2367 |
 | Hostage Project | feat(compiler): add package resolution, semantic analysis, and pytest structure | 2026-09-21 | https://github.com/robruon/sl/commit/43060f610db1be7dbc63319692f2601ddc3a2c6c |
 
 
