@@ -128,12 +128,6 @@ graph TD
 # Recent Engineering Activity
 
 <!-- ACTIVITY:START -->
-### sl
-
-| Author | Message | Date | Link |
-|:--|:--|:--|:--|
-| Hostage Project | refactor(language): adopt .syl and remove legacy syntax | 2026-09-21 | https://github.com/robruon/sl/commit/9974c808a0706c190d66edcabdd7326647bc2367 |
-
 
 <!-- ACTIVITY:END -->
 
